@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# THE SHOPPIES
+
+An app built in React for the Shopify Front-end Intern challenge
+
+## Features
+
+TBD
 
 ## Available Scripts
 
