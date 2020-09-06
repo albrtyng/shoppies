@@ -1,0 +1,52 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+.search {
+  @include flex($fw: wrap, $jc: space-between);
+  width: 100%;
+  margin: 0 auto;
+
+  @include tablet {
+    width: 28.125rem;
+  }
+
+  @include desktop-l {
+    width: 35.9375rem;
+  }
+
+  &__input {
+    height: 3.25rem !important;
+    border: none !important;
+    background: transparent !important;
+    color: white !important;
+
+    @include tablet {
+      @include font(1.5rem !important, 1rem !important, 400, white);
+      width: 75% !important;
+      margin: 0;
+    }
+
+    @include desktop-l {
+      @include font(1.75rem !important, 1.5rem !important, 400, white);
+      width: 65% !important;
+    }
+
+    &:focus, &:active {
+      background: white;
+      transform: scale(1.05);
+      box-shadow: none !important;
+    }
+
+    &::placeholder {
+      color: white !important;
+
+      @include tablet {
+        @include font(1.5rem, 1rem, 400, white !important);
+      }
+
+      @include desktop-l {
+        @include font(1.75rem, 1.5rem, 400, white !important);
+      }
+    }
+  }
+}

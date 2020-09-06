@@ -1,0 +1,57 @@
+@import './constants';
+
+@mixin mobile-s {
+  @media screen and (min-width: $mobile-s-break) {
+    @content;
+  }
+}
+@mixin mobile-m {
+  @media screen and (min-width: $mobile-m-break) {
+    @content;
+  }
+}
+@mixin mobile-l {
+  @media screen and (min-width: $mobile-l-break) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: $tablet-break) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: $desktop-break) {
+    @content;
+  }
+}
+@mixin desktop-l {
+  @media screen and (min-width: $desktop-l-break) {
+    @content;
+  }
+}
+
+@mixin font(
+  $lh: 1rem, $fs: 1rem, $fw: 400,
+  $c: black, $m: auto, $w: 100%
+) {
+  font-size: $fs;
+  line-height: $lh;
+  font-weight: $fw;
+  color: $c;
+  width: $w;
+  margin: $m;
+}
+
+@mixin flex(
+  $jc: flex-start, $ai: stretch, $ac: stretch,
+  $bx: content-box, $fd: row, $fw: nowrap
+) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  align-content: $ac;
+  box-sizing: $bx;
+  flex-direction: $fd;
+  flex-wrap: $fw;
+}

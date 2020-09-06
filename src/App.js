@@ -1,24 +1,88 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import {
+  Redirect,
+  Route,
+  Switch,
+  useLocation
+} from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
-function App() {
+import AlertMessage from './components/AlertMessage';
+import NominationModal from './components/NominationModal';
+
+import HomePage from './pages/HomePage';
+import MovieList from './components/MovieList';
+
+import './styles/App.scss';
+
+const App = () => {
+  const location = useLocation();
+
+  const [nominations, setNominations] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSelect = movie => {
+    setNominations(
+      currentNoms => {
+        if (currentNoms.find(nom => nom.imdbID === movie.imdbID)) {
+          if (currentNoms.length <= 5) {
+            setShowAlert(false);
+          }
+          return currentNoms.filter(nom => nom.imdbID !== movie.imdbID)
+        } else {
+          if (currentNoms.length === 5) {
+            setShowAlert(true);
+          } else if (currentNoms.length <= 4) {
+            if (currentNoms.length === 4) {
+              setShowAlert(true);
+            }
+            return [...currentNoms, movie]
+          }
+
+          return currentNoms;
+        }
+      }
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <AlertMessage
+        key='alert-message'
+        showAlert={showAlert}
+        showModal={() => setShowModal(true)}
+        onClose={() => setShowAlert(false)}
+      />
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
+          <Redirect exact from='/' to='/home' />
+          <Route exact path='/home' render={
+            () => (
+              <HomePage
+                nominations={nominations}
+                setShow={setShowModal}
+              />
+            )
+          } />
+          <Route path='/movies' render={
+            () => {
+            return (
+              <MovieList
+                handleSelect={handleSelect}
+                nominations={nominations}
+              />
+            )
+          }} />
+        </Switch>
+      </AnimatePresence>
+      <NominationModal
+        key='nomination-modal'
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        nominations={nominations}
+        handleSelect={handleSelect}
+      />
     </div>
   );
 }

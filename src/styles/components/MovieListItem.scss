@@ -1,0 +1,78 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+.movie {
+  @include flex($ai: center, $bx: border-box);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+  height: 3.125rem;
+  padding-right: 1rem;
+  width: 100%;
+
+  @include tablet {
+    height: 6.25rem;
+  }
+
+  &__poster {
+    width: 2.1875rem;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-right: 1rem;
+
+    @include tablet {
+      width: 4.6875rem;
+    }
+  }
+
+  &__title {
+    @include font(1rem, 0.875rem, 600, black, 0 1rem 0 0);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include tablet {
+      @include font(1.25rem, 1rem, 600, black, 0 1rem 0 0);
+    }
+
+    @include desktop-l {
+      @include font(1.5rem, 1.25rem, 600, black, 0 0 1rem);
+    }
+  }
+
+  &__year {
+    margin: 0 1rem 0 0;
+
+    @include tablet {
+      @include font(1.25rem, 1rem, 400, black, 0 1rem 0 0, auto);
+    }
+
+    @include desktop-l {
+      @include font(1.5rem, 1.25rem, 400, black, 0 1rem 0 0, auto);
+    }
+  }
+
+  &__radio {
+    padding: 0 !important;
+  
+    & :first-child {
+      margin-top: 0 !important;
+      margin-left: 0 !important;
+
+      @include tablet {
+        width: 1.5rem;
+        height: 1.5rem
+      }
+    }
+  }
+
+  &--selected {
+    background-color: #9198E5;
+
+    & :nth-child(2), & :nth-child(3) {
+      color: white;
+    }
+  }
+}

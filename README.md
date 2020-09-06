@@ -4,7 +4,11 @@ An app built in React for the Shopify Front-end Intern challenge
 
 ## Features
 
-TBD
+Hooks
+Framer-motion page transitions
+Bootstrap
+Modals
+Responsive design
 
 ## Available Scripts
 

@@ -1,0 +1,45 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+.footer {
+  @include flex($ac: flex-start, $fw: wrap, $jc: center);
+  background-color: white;
+  height: 100vh;
+  width: 100%;
+  padding: 4rem 1rem 0;
+  background: linear-gradient(to top left, #008060 50%, transparent 50.5%) no-repeat top,
+  linear-gradient(0deg, #008060, #008060) no-repeat bottom;
+  background-size: 100% 4rem, 100% calc(100% - 3.96rem);
+  overflow: hidden;
+
+  @include mobile-m {
+    padding: 4rem 1.1719rem 0;
+  }
+
+  @include mobile-l {
+    padding: 4rem 1.3281rem 0;
+  }
+
+  @include tablet {
+    padding: 6rem 7.5rem 0;
+  }
+
+  &__quote {
+    @include font(
+      1.75rem, 1.25rem,
+      400, #212326, 0 0 1.25rem
+    );
+    text-align: center;
+  }
+
+  &__author {
+    @include font(
+      1.125rem, 0.875rem,
+      800, #42474C, 0 0 1rem
+    );
+    text-transform: uppercase;
+    font-style: normal;
+    text-align: center;
+    height: 2rem;
+  }
+}

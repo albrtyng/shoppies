@@ -1,0 +1,45 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+.alert-message {
+  @include flex($ai: center, $jc: space-between, $bx: border-box, $fw: wrap);
+  position: fixed !important;
+  margin: 0 !important;
+  padding: .5rem 1rem !important;
+  height: 4.6875rem !important;
+  background-color: #9198E5;
+  width: 100%;
+  z-index: 2;
+
+  @include tablet {
+    padding: .5rem 4rem !important;
+    height: 6.25rem !important;
+  }
+
+  @include desktop {
+    padding: .5rem 7rem !important;
+  }
+
+  &__header {
+    @include font(1.25rem, 1.125rem, 600, white);
+
+    @include tablet {
+      @include font(1.5rem, 1.5rem, 600, white);
+    }
+
+    @include desktop-l {
+      @include font(1.75rem, 1.75rem, 600, white);
+    }
+  }
+
+  .close {
+    height: 100% !important;
+    color: white !important;
+    padding: 0 !important;
+    margin: -0.5rem 0.5rem 0;
+
+    @include tablet {
+      @include font(2.25rem, 2rem, 600, white, -0.5rem 4rem 0, auto);
+    }
+  }
+}

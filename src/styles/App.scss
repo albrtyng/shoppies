@@ -1,0 +1,97 @@
+@import './partials/constants';
+@import './partials/mixins';
+
+@import "~bootstrap/scss/bootstrap";
+
+/*
+  Styling for App.js and shared page elements
+*/
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  box-sizing: border-box;
+  background: linear-gradient(0deg, #008060, #9198E5);
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+}
+
+.btn {
+  @include font(1.5rem, 1rem, 700, white);
+  box-sizing: border-box;
+  width: 100%;
+  height: 3.25rem;
+  background-color: #007759;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.05);
+
+  @include tablet {
+    @include font(1.5rem, 1rem, 700, white, 0, 20%);
+  }
+
+  @include desktop-l {
+    @include font(1.75rem, 1.5rem, 700, white, 0, 30%);
+  }
+
+  &:focus, &:active {
+    background-color: #00382a !important;
+    border: none !important;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  &:hover {
+    background-color: #004937;
+  }
+
+  &--back {
+    @include flex($ai: center, $jc: center);
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    fill: #008060;
+    margin-bottom: 1rem;
+
+    & :first-child {
+      transform: scale(2);
+    }
+
+    &:hover {
+      fill: #9198E5;
+    }
+
+    &:focus, &:active {
+      fill: #656aa1;
+      border: none;
+    }
+  }
+
+  &--show-noms {
+    @include font(0.875rem, 0.75rem, 400, white, 0.25rem 0, auto);
+    border-radius: 4px;
+    outline: none;
+    height: auto;
+    background-color: #008060;
+
+    @include tablet {
+      @include font(1.25rem, 1rem, 400, white, 0.25rem 0, auto);
+    }
+
+    @include desktop-l {
+      @include font(1.5rem, 1.25rem, 400, white, 0.25rem 0, auto);
+    }
+
+    &:hover, &:focus, &:active {
+      color: white;
+    }
+  }
+}

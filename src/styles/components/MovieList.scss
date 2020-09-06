@@ -1,0 +1,63 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+.movies {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1rem;
+
+  @include mobile-m {
+    padding: 2rem 1.1719rem;
+  }
+
+  @include mobile-l {
+    padding: 2rem 1.3281rem;
+  }
+
+  @include tablet {
+    padding: 2rem 3rem;
+  }
+
+  &__list {
+    background: white;
+    border-radius: 20px;
+    height: 100%;
+    padding: 2rem 1rem;
+    overflow-y: scroll;
+
+    @include mobile-m {
+      padding: 2rem 1.1719rem;
+    }
+  
+    @include mobile-l {
+      padding: 2rem 1.3281rem;
+    }
+
+    @include tablet {
+      padding: 2rem;
+    }
+
+    @include desktop {
+      margin: auto;
+      width: 34.375rem;
+    }
+
+    @include desktop-l {
+      margin: auto;
+      width: 48.4375rem;
+    }
+  }
+
+  &__text {
+    @include font(1.25rem, 1rem, 400, black, 0 0 1rem);
+
+    @include tablet {
+      @include font(1.5rem, 1.25rem, 400, black, 0 0 1rem);
+    }
+
+    @include desktop-l {
+      @include font(1.75rem, 1.5rem, 400, black, 0 0 1rem);
+    }
+  }
+}
