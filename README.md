@@ -11,7 +11,7 @@ Modals\
 Responsive design
 
 ## Heroku URL
-https://albertyang-shoppies.herokuapp.com/home
+[https://albertyang-shoppies.herokuapp.com/home](https://albertyang-shoppies.herokuapp.com/home)
 
 ## Available Scripts
 
