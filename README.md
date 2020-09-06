@@ -10,6 +10,9 @@ Bootstrap\
 Modals\
 Responsive design
 
+## Heroku URL
+https://albertyang-shoppies.herokuapp.com/home
+
 ## Available Scripts
 
 In the project directory, you can run:
