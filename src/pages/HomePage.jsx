@@ -42,7 +42,7 @@ const HomePage = ({ nominations, setShow }) => {
           searchQuery={searchQuery}
         />
         <p className='home__disclaimer'>
-          Hire Albert Yang for 4 months, no maintenance required.
+          Hire Albert Yang for 4-8 months, no maintenance required.
           By checking out this submission, you agree to follow-up with Albert on his Life Story.
         </p>
       </motion.div>
