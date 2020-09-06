@@ -25,6 +25,7 @@
     height: 100%;
     padding: 2rem 1rem;
     overflow-y: scroll;
+    overflow-x: hidden;
 
     @include mobile-m {
       padding: 2rem 1.1719rem;
