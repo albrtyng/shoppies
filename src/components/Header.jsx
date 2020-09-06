@@ -2,7 +2,7 @@ import React from 'react';
 
 import NominationButton from '../components/NominationButton';
 
-import Logo from '../assets/logo.svg';
+import Logo from '../assets/images/logo.svg';
 
 import '../styles/components/Header.scss';
 

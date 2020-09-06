@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Ballot from '../assets/ballot.svg';
+import Ballot from '../assets/images/ballot.svg';
 
 import '../styles/components/NominationButton.scss';
 

@@ -16,6 +16,7 @@
   &__body {
     @include flex($bx: border-box, $fw: wrap);
     width: 100%;
+    overflow-x: hidden;
 
     @include tablet {
       height: 375px;

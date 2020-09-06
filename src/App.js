@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Redirect,
   Route,
   Switch,
   useLocation
@@ -56,8 +55,7 @@ const App = () => {
       />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
-          <Redirect exact from='/' to='/home' />
-          <Route exact path='/home' render={
+          <Route exact path={'/home'} render={
             () => (
               <HomePage
                 nominations={nominations}

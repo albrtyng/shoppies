@@ -1,26 +1,11 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-
-import '../styles/components/NominationModal.scss';
-import MovieListItem from './MovieListItem';
 import { motion } from 'framer-motion';
 
-const staggerMovies = {
-  hide: {
-    opacity: 0,
-    transition: {
-      when: 'afterChildren',
-      staggerChildren: 0.2
-    }
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      when: 'beforeChildren',
-      staggerChildren: 0.2
-    }
-  }
-}
+import MovieListItem from './MovieListItem';
+import { staggerMovies } from '../assets/animations.js';
+
+import '../styles/components/NominationModal.scss';
 
 const NominationModal = ({ show, onHide, nominations, handleSelect }) => {
   return (

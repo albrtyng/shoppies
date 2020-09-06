@@ -4,43 +4,10 @@ import axios from 'axios';
 import qs from 'query-string';
 import { motion } from 'framer-motion';
 
-import '../styles/components/MovieList.scss';
 import MovieListItem from './MovieListItem';
+import { movieList, staggerMovies } from '../assets/animations.js';
 
-const movieListAnim = {
-  hide: {
-    opacity: 0,
-    scale: 0.1,
-    transition: {
-      duration: 0.7
-    }
-  },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.7,
-      staggerChildren: 1
-    }
-  }
-}
-
-const staggerMovies = {
-  hide: {
-    opacity: 0,
-    transition: {
-      when: 'afterChildren',
-      staggerChildren: 0.2
-    }
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      when: 'beforeChildren',
-      staggerChildren: 0.2
-    }
-  }
-}
+import '../styles/components/MovieList.scss';
 
 const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
@@ -66,7 +33,7 @@ const MovieList = (props) => {
     <div className='movies'>
       <motion.div
         className='movies__list'
-        variants={movieListAnim}
+        variants={movieList}
         initial='hide'
         animate='show'
         exit='hide'
