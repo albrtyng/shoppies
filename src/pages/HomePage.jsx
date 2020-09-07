@@ -9,7 +9,6 @@ import '../styles/pages/HomePage.scss';
 import Header from '../components/Header';
 
 const HomePage = ({ nominations, setShow }) => {
-  const [searchError, setSearchError] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
   const history = useHistory();
@@ -17,14 +16,11 @@ const HomePage = ({ nominations, setShow }) => {
   const handleSearchChange = e => {
     e.preventDefault(); 
     setSearchQuery(e.target.value)
-    setSearchError('');
   }
 
   const handleSearchSubmit = e => {
     e.preventDefault();
-    if (searchQuery.length < 3) {
-      setSearchError('Must be at least 3 characters');
-    } else {
+    if (searchQuery.length >= 3) {
       history.push(`/movies?search=${searchQuery}`);
     }
   }
@@ -47,7 +43,6 @@ const HomePage = ({ nominations, setShow }) => {
           handleChange={e => { handleSearchChange(e) }}
           handleSubmit={e => { handleSearchSubmit(e) }}
           searchQuery={searchQuery}
-          errorMessage={searchError}
         />
         <p className='home__disclaimer'>
           Hire Albert Yang for 4-8 months, no maintenance required.
