@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import {
   Route,
   Switch,
-  useLocation
+  useLocation,
+  Redirect
 } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import AlertMessage from './components/AlertMessage';
-import NominationModal from './components/NominationModal';
-
 import HomePage from './pages/HomePage';
 import MovieList from './components/MovieList';
+import NominationModal from './components/NominationModal';
 
 import './styles/App.scss';
 
@@ -55,7 +55,7 @@ const App = () => {
       />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
-          <Route exact path={['/', '/home']} render={
+          <Route exact path='/home' render={
             () => (
               <HomePage
                 nominations={nominations}
@@ -72,6 +72,9 @@ const App = () => {
               />
             )
           }} />
+          <motion.div exit={{ opacity: 0 }}>
+            <Redirect exact from='/' to='/home' />
+          </motion.div>
         </Switch>
       </AnimatePresence>
       <NominationModal
