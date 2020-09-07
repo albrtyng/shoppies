@@ -5,7 +5,7 @@ import '../styles/components/SearchBar.scss';
 
 const SearchBar = ({ searchQuery, handleChange, handleSubmit }) => {
   return (
-    <Form className='search'> 
+    <Form className='search' onSubmit={handleSubmit}> 
       <Form.Control
         className='search__input'
         placeholder='Search for movies...'

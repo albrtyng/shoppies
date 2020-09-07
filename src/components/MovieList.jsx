@@ -30,46 +30,48 @@ const MovieList = (props) => {
   }, [location.search])
 
   return (
-    <div className='movies'>
+    <motion.div
+      className='movies'
+      variants={movieList}
+      initial='hide'
+      animate='show'
+      exit='hide'
+    >
       <motion.div
         className='movies__list'
-        variants={movieList}
+        variants={staggerMovies}
         initial='hide'
-        animate='show'
+        animate={movies.length > 0 ? 'show' : 'hide'}
         exit='hide'
       >
-        <svg className='btn--back' onClick={() => {history.push('/home')}}>
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
-        </svg>
+        <div className='movies__header'>
+          <svg className='btn--back' onClick={() => {history.push('/home')}}>
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
+          </svg>
+          <h2 className='movies__title'>Choose movies to nominate</h2>
+        </div>
         <p className='movies__text'>Search results for "{search}"</p>
-        <motion.div
-          variants={staggerMovies}
-          initial='hide'
-          animate={movies.length > 0 ? 'show' : 'hide'}
-          exit='hide'
-        >
-          {
-            movies.map(movie => (
-              <MovieListItem
-                key={movie.imdbID}
-                {...movie}
-                handleSelect={props.handleSelect}
-                isChecked={
-                  props.nominations.findIndex(
-                    nom => nom.imdbID === movie.imdbID
-                  ) !== -1
-                }
-              />
-            ))
-          }
-        </motion.div>
         {
-          movies.length === 0 ? (
-            <p className='movies__text'>No movies found</p>
-          ) : null
+          movies.map(movie => (
+            <MovieListItem
+              key={movie.imdbID}
+              {...movie}
+              handleSelect={props.handleSelect}
+              isChecked={
+                props.nominations.findIndex(
+                  nom => nom.imdbID === movie.imdbID
+                ) !== -1
+              }
+            />
+          ))
         }
       </motion.div>
-    </div>
+      {
+        movies.length === 0 ? (
+          <p className='movies__text'>No movies found</p>
+        ) : null
+      }
+    </motion.div>
   );
 }
 
