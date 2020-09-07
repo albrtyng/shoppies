@@ -9,10 +9,25 @@ import '../styles/pages/HomePage.scss';
 import Header from '../components/Header';
 
 const HomePage = ({ nominations, setShow }) => {
+  const [searchError, setSearchError] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
   const history = useHistory();
 
+  const handleSearchChange = e => {
+    e.preventDefault(); 
+    setSearchQuery(e.target.value)
+    setSearchError('');
+  }
+
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+    if (searchQuery.length < 3) {
+      setSearchError('Must be at least 3 characters');
+    } else {
+      history.push(`/movies?search=${searchQuery}`);
+    }
+  }
   return (
     <div className='home'>
       <motion.div
@@ -29,17 +44,10 @@ const HomePage = ({ nominations, setShow }) => {
         <h1 className='home__title'>Nominate up to 5 movies</h1>
         <p className='home__boast'>Trusted by over 1 person worldwide</p>
         <SearchBar
-          handleChange={e => {
-            e.preventDefault(); 
-            setSearchQuery(e.target.value) 
-          }}
-          handleSubmit={e => {
-            e.preventDefault();
-            if (searchQuery) {
-              history.push(`/movies?search=${searchQuery}`);
-            }
-          }}
+          handleChange={e => { handleSearchChange(e) }}
+          handleSubmit={e => { handleSearchSubmit(e) }}
           searchQuery={searchQuery}
+          errorMessage={searchError}
         />
         <p className='home__disclaimer'>
           Hire Albert Yang for 4-8 months, no maintenance required.

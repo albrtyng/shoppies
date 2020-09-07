@@ -14,16 +14,24 @@
     width: 35.9375rem;
   }
 
+  &__error {
+    @include font(0.875rem, 0.75rem, 400, red);
+    position: absolute;
+    align-self: flex-end;
+    margin: 0 0 0 1rem;
+  }
+
   &__input {
     height: 3.25rem !important;
     border: none !important;
     background: transparent !important;
     color: white !important;
+    margin: 0 !important;
+    padding: .5rem 1rem !important;
 
     @include tablet {
       @include font(1.5rem !important, 1rem !important, 400, white);
       width: 75% !important;
-      margin: 0;
     }
 
     @include desktop-l {

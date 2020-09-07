@@ -30,18 +30,12 @@ const MovieList = (props) => {
   }, [location.search])
 
   return (
-    <motion.div
-      className='movies'
-      variants={movieList}
-      initial='hide'
-      animate='show'
-      exit='hide'
-    >
+    <div className='movies'>
       <motion.div
         className='movies__list'
-        variants={staggerMovies}
+        variants={movieList}
         initial='hide'
-        animate={movies.length > 0 ? 'show' : 'hide'}
+        animate='show'
         exit='hide'
       >
         <div className='movies__header'>
@@ -51,27 +45,34 @@ const MovieList = (props) => {
           <h2 className='movies__title'>Choose movies to nominate</h2>
         </div>
         <p className='movies__text'>Search results for "{search}"</p>
+        <motion.div
+          variants={staggerMovies}
+          initial='hide'
+          animate={movies.length > 0 ? 'show' : 'hide'}
+          exit='hide'
+        >
+          {
+            movies.map(movie => (
+              <MovieListItem
+                key={movie.imdbID}
+                {...movie}
+                handleSelect={props.handleSelect}
+                isChecked={
+                  props.nominations.findIndex(
+                    nom => nom.imdbID === movie.imdbID
+                  ) !== -1
+                }
+              />
+            ))
+          }
+        </motion.div>
         {
-          movies.map(movie => (
-            <MovieListItem
-              key={movie.imdbID}
-              {...movie}
-              handleSelect={props.handleSelect}
-              isChecked={
-                props.nominations.findIndex(
-                  nom => nom.imdbID === movie.imdbID
-                ) !== -1
-              }
-            />
-          ))
+          movies.length === 0 ? (
+            <p className='movies__text'>No movies found</p>
+          ) : null
         }
       </motion.div>
-      {
-        movies.length === 0 ? (
-          <p className='movies__text'>No movies found</p>
-        ) : null
-      }
-    </motion.div>
+    </div>
   );
 }
 
